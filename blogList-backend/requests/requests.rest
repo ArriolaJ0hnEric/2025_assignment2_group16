@@ -1,0 +1,13 @@
+GET http://localhost:3003/api/blogs
+
+###
+POST http://localhost:3003/api/blogs HTTP/1.1
+Content-Type: application/json
+
+{
+    "author": "stocazzo2",
+    "likes": 2
+}
+
+###
+DELETE http://localhost:3003/api/blogs/5a422b3a1b54a676234d17f9 HTTP/1.1
