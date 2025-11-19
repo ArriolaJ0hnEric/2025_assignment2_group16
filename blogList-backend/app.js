@@ -8,7 +8,6 @@ const blogsRouter = require('./controllers/blogs')
 const usersRouter = require('./controllers/users')
 const loginRouter = require('./controllers/login')
 const middleware = require('./utils/middleware')
-const { subtract } = require('lodash')
 const app = express()
 
 mongoose.set('strictQuery', false)

@@ -1,8 +1,9 @@
 import globals from "globals";
 import stylisticJs from '@stylistic/eslint-plugin-js'
-import js from '@eslint/js'
+import js from '@eslint/js';
+import { defineConfig } from "eslint/config";
 
-export default [
+export default defineConfig ([
   js.configs.recommended,
   {
     files: ["**/*.js"],
@@ -27,7 +28,11 @@ export default [
       ],
       '@stylistic/js/quotes': [
         'error',
-        'single'
+        'single',
+        {
+          'avoidEscape': true,
+          "allowTemplateLiterals": true,
+        }
       ],
       '@stylistic/js/semi': [
         'error',
@@ -42,11 +47,9 @@ export default [
         'error', { 'before': true, 'after': true },
       ],
       'no-console': 'off',
-      'avoidEscape': true,
-      "allowTemplateLiterals": true,
     },
   },
   { 
     ignores: ["dist/**", "build/**"],
   },
-]
+])

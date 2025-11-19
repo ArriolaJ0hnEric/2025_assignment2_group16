@@ -21,7 +21,7 @@ beforeEach(async () => {
     const response = await api
         .post('/api/login')
         .send(validUser)
-    
+
     token = response.body.token
 
     await api
@@ -30,9 +30,9 @@ beforeEach(async () => {
         .send(helper.initialBlogs[0])
 
     await api
-    .post('/api/blogs')
-    .set('Authorization', `Bearer ${token}`)
-    .send(helper.initialBlogs[1])
+        .post('/api/blogs')
+        .set('Authorization', `Bearer ${token}`)
+        .send(helper.initialBlogs[1])
 })
 
 describe('GET tests', () => {
@@ -60,9 +60,9 @@ describe('GET tests', () => {
 describe('POST tests', () => {
     test('POST adds a new blog to database', async () => {
         const newBlog = {
-            title: "React patterns",
-            author: "Michael Chan",
-            url: "https://reactpatterns.com/",
+            title: 'React patterns',
+            author: 'Michael Chan',
+            url: 'https://reactpatterns.com/',
             likes: 7,
         }
 
@@ -74,7 +74,7 @@ describe('POST tests', () => {
             .expect('Content-Type', /application\/json/)
 
         const blogsAfter = await helper.notesInDb()
-        
+
         assert.strictEqual(blogsAfter.length, helper.initialBlogs.length + 1)
 
         const content = blogsAfter.map(b => b.title)
@@ -91,9 +91,9 @@ describe('POST tests', () => {
 
     test('no likes equals 0 likes', async () => {
         const newBlog = {
-            title: "TDD harms architecture",
-            author: "Robert C. Martin",
-            url: "http://blog.cleancoder.com/uncle-bob/2017/03/03/TDD-Harms-Architecture.html",
+            title: 'TDD harms architecture',
+            author: 'Robert C. Martin',
+            url: 'http://blog.cleancoder.com/uncle-bob/2017/03/03/TDD-Harms-Architecture.html',
         }
 
         await api
@@ -112,7 +112,7 @@ describe('POST tests', () => {
 
     test('fail with statuscode 400 if bad request', async () => {
         const newBlog = {
-            author: "Robert C. Martin",
+            author: 'Robert C. Martin',
             likes: 5,
         }
 
@@ -125,9 +125,9 @@ describe('POST tests', () => {
 
     test('fail with proper statuscode and error when token not provided', async () => {
         const newBlog = {
-            title: "React patterns",
-            author: "Michael Chan",
-            url: "https://reactpatterns.com/",
+            title: 'React patterns',
+            author: 'Michael Chan',
+            url: 'https://reactpatterns.com/',
             likes: 7,
         }
 
@@ -135,7 +135,7 @@ describe('POST tests', () => {
             .post('/api/blogs')
             .send(newBlog)
             .expect(401)
-        
+
         assert.strictEqual(response.body.error, 'invalid token')
     })
 })
@@ -162,7 +162,7 @@ describe('DELETE tests', () => {
         const response = await api
             .delete(`/api/blogs/${blogToDelete.id}`)
             .expect(401)
-        
+
         assert.strictEqual(response.body.error, 'invalid token')
     })
 })
@@ -210,7 +210,7 @@ describe('PUT tests', () => {
         const response = await api
             .put(`/api/blogs/${blogToUpdate.id}`)
             .expect(401)
-        
+
         assert.strictEqual(response.body.error, 'invalid token')
     })
 })
