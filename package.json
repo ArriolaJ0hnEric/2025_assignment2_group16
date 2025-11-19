@@ -1,0 +1,13 @@
+{
+  "name": "assignment_group16",
+  "version": "1.0.0",
+  "main": "blogList-backend/index.js",
+  "scripts": {
+    "build": "cd ./blogList-backend/ && @powershell Remove-Item -Recurse -Force dist && cd ../bloglist-frontend && npm run build && @powershell Copy-Item dist -Recurse ../blogList-backend",
+    "start": "cd ./blogList-backend/ && npm run start",
+    "dev": "cd ./blogList-backend/ && npm run dev"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

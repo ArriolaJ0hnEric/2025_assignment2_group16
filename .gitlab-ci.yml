@@ -26,13 +26,12 @@ stages:          # List of stages for jobs, and their order of execution
   - docs
   - deploy
 
-build-backend:       # This job runs in the build stage, which runs first.
+build-backend:       # This job installs 
   stage: build
   image: node:20.11.1-alpine
   script:
     - cd ./blogList-backend/
     - npm install
-    - npm run build
 
 build-frontend:       # This job runs in the build stage, which runs first.
   stage: build
@@ -40,7 +39,6 @@ build-frontend:       # This job runs in the build stage, which runs first.
   script:
     - cd ./bloglist-frontend/
     - npm install
-    - npm build
 
 build-playwright:       # This job runs in the build stage, which runs first.
   stage: build
@@ -48,7 +46,6 @@ build-playwright:       # This job runs in the build stage, which runs first.
   script:
     - cd ./playwright-tests/
     - npm install
-    - npm build
 
 unit-test-job:   # This job runs in the test stage.
   stage: test    # It only starts when the job in the build stage completes successfully.
