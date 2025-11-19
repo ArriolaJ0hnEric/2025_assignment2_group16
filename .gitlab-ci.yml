@@ -49,24 +49,26 @@ build-playwright:       # This job installs the node packages needed for the pla
 
 verify-backend:
   stage: verify
-  image: node:20.11.1-alpine
   script:
     - cd ./blogList-backend/
     - npm run lint
 
 verify-frontend:
   stage: verify
-  image: node:20.11.1-alpine
   script:
     - cd ./bloglist-frontend
     - npm run lint
 
-unit-test-job:   # This job runs in the test stage.
+unit-test:   # This job runs in the test stage.
   stage: test    # It only starts when the job in the build stage completes successfully.
   script:
     - echo "Running unit tests... This will take about 60 seconds."
     - sleep 60
     - echo "Code coverage is 90%"
+
+integration-test:
+  stage: test
+  
 
 lint-test-job:   # This job also runs in the test stage.
   stage: test    # It can run at the same time as unit-test-job (in parallel).
