@@ -32,6 +32,10 @@ build-backend:       # This job installs the node packages needed for the backen
   script:
     - cd ./blogList-backend/
     - npm install
+  artifacts:
+    paths:
+      - ./blogList-backend/node_modules/
+    expire_in: 1 hour
 
 build-frontend:       # This job installs the node packages needed for the frontend
   stage: build
@@ -39,6 +43,10 @@ build-frontend:       # This job installs the node packages needed for the front
   script:
     - cd ./bloglist-frontend/
     - npm install
+  artifacts:
+    paths:
+      - ./bloglist-frontend/node_modules/
+    expire_in: 1 hour
 
 build-playwright:       # This job installs the node packages needed for the playwright tests
   stage: build
@@ -46,18 +54,28 @@ build-playwright:       # This job installs the node packages needed for the pla
   script:
     - cd ./playwright-tests/
     - npm install
+  artifacts:
+    paths:
+      - ./playwright-tests/node_modules/
+    expire_in: 1 hour
 
 verify-backend:
   stage: verify
+  image: node:20.11.1-alpine
   script:
     - cd ./blogList-backend/
     - npm run lint
+  dependencies:
+    - build-backend
 
 verify-frontend:
   stage: verify
+  image: node:20.11.1-alpine
   script:
     - cd ./bloglist-frontend
     - npm run lint
+  dependencies:
+    - build-frontend
 
 unit-test:   # This job runs in the test stage.
   stage: test    # It only starts when the job in the build stage completes successfully.
