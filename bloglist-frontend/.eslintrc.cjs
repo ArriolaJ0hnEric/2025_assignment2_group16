@@ -15,14 +15,6 @@ module.exports = {
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh'],
   rules: {
-    "indent": [
-        "error",
-        4  
-    ],
-    "linebreak-style": [
-        "error",
-        "windows"
-    ],
     "quotes": [
         "error",
         "single"
