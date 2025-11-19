@@ -30,7 +30,7 @@ build-backend:       # This job runs in the build stage, which runs first.
   stage: build
   image: node:20.11.1-alpine
   script:
-    - cd .\blogList-backend\
+    - cd ./blogList-backend/
     - npm install
     - npm build
 
@@ -38,7 +38,7 @@ build-frontend:       # This job runs in the build stage, which runs first.
   stage: build
   image: node:20.11.1-alpine
   script:
-    - cd .\blogList-frontend\
+    - cd ./blogList-frontend/
     - npm install
     - npm build
 
@@ -46,7 +46,7 @@ build-playwright:       # This job runs in the build stage, which runs first.
   stage: build
   image: node:20.11.1-alpine
   script:
-    - cd .\playwright-tests\
+    - cd ./playwright-tests/
     - npm install
     - npm build
 
