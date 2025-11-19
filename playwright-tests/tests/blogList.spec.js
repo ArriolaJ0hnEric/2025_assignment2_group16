@@ -39,7 +39,7 @@ describe('Blog app', () => {
             beforeEach(async ({ page }) => {
                 await loginWith(page, 'test1', 't3$t1')
             })
-    
+
             test('a new blog can be created', async ({ page }) => {
                 await createBlog(
                     page,
@@ -47,7 +47,7 @@ describe('Blog app', () => {
                     'test author',
                     'test url'
                 )
-    
+
                 await expect(page.getByText('a new blog test blog added')).toBeVisible()
             })
 
