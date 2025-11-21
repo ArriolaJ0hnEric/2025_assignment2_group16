@@ -1,9 +1,9 @@
 const { test, describe, beforeEach, after } = require('node:test')
 const assert = require('node:assert')
-const app = require('../app')
+const app = require('../src/app')
 const supertest = require('supertest')
 const helper = require('./test_helper')
-const User = require('../models/user')
+const User = require('../src/models/user')
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 
