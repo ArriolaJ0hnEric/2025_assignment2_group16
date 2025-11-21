@@ -85,7 +85,7 @@ integration-test:
     - build-root
     - build-backend
 
-package-frontend:
+package:
   stage: package
   image: node:20.11.1-alpine
   script:
@@ -93,10 +93,3 @@ package-frontend:
   dependencies:
     - build-root
     - build-frontend
-
-deploy-job:      # This job runs in the deploy stage.
-  stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
-  environment: production
-  script:
-    - echo "Deploying application..."
-    - echo "Application successfully deployed."
