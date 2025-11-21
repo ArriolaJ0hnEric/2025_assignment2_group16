@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "main": "blogList-backend/index.js",
   "scripts": {
-    "build": "node ./scripts/build.js",
+    "build:frontend": "node ./scripts/buildFrontend.js",
+    "build": "npm run build:frontend && node ./scripts/build.js",
     "start": "cd ./blogList-backend/ && npm run start",
-    "dev": "cd ./blogList-backend/ && npm run dev"
+    "dev": "cd ./blogList-backend/ && npm run dev",
+    "flow": "flow",
+    "test": "cd ./blogList-backend/ && npm run test"
   },
   "author": "",
   "license": "ISC",

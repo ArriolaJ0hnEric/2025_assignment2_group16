@@ -10,7 +10,7 @@ const bcrypt = require('bcrypt')
 const api = supertest(app)
 
 beforeEach(async () => {
-    await User.deleteMany({})
+    await helper.delteUsersIfNotEmpty()
 
     let passwordHash = await bcrypt.hash('M0n4_$imp', 10)
     let user = new User({
