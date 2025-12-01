@@ -21,7 +21,6 @@ stages:          # List of stages for jobs, and their order of execution
   - verify
   - test
   - package
-  - deploy
   - release
   - docs
   - deploy
@@ -90,6 +89,10 @@ package:
   image: node:20.11.1-alpine
   script:
     - npm run build
+  artifacts:
+    paths:
+      - ./build
+    expire_in: 1 hour
   dependencies:
     - build-root
     - build-frontend
